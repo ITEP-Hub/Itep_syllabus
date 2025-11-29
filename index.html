@@ -841,6 +841,30 @@
             </div>
         </div>
 	</div>
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adBanner = document.getElementById('adBanner');
+            const minimizeBtn = document.getElementById('minimizeBtn');
+            
+            // Check if the banner was minimized previously
+            if (localStorage.getItem('adMinimized') === 'true') {
+                adBanner.classList.add('minimized');
+                minimizeBtn.textContent = '+';
+            }
+            
+            // Toggle minimize state
+            minimizeBtn.addEventListener('click', function() {
+                adBanner.classList.toggle('minimized');
+				if (adBanner.classList.contains('minimized')) {
+                    minimizeBtn.textContent = '+';
+                    localStorage.setItem('adMinimized', 'true');
+                } else {
+                    minimizeBtn.textContent = '_';
+                    localStorage.setItem('adMinimized', 'false');
+                }
+            });
+        });
+    </script>
         <!-- Breadcrumb -->
         <div class="breadcrumb">
             <ul class="breadcrumb-list">
@@ -1065,6 +1089,7 @@
     </footer>
  </body>
 </html>
+
 
 
 
